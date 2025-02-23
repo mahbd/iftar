@@ -12,7 +12,7 @@ const OrderPage = () => {
     <div>
       <div
         className={
-          "flex flex-col h-screen justify-center items-center gap-5 w-80"
+          "flex flex-col h-screen justify-center items-center gap-5 w-80 md:w-96"
         }
       >
         <h1 className={"text-xl md:text-4xl font-bold"}>
@@ -22,9 +22,9 @@ const OrderPage = () => {
           <Button
             size={"xxl"}
             onClick={() => setPredefined(!predefined)}
-            className={"w-80"}
+            className={"w-80 md:w-96"}
           >
-            Predefined Packages
+            Packages
           </Button>
         )}
         {predefined && <PackageSellPage />}
@@ -34,7 +34,7 @@ const OrderPage = () => {
             onClick={() => setCustom(!custom)}
             className={"w-80"}
           >
-            Custom package
+            Custom Package
           </Button>
         )}
         {custom && <CustomSellPage />}

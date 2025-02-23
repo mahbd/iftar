@@ -135,10 +135,10 @@
 
 .background-container {
     width: 100%;
-    background: radial-gradient(circle at 10% 40%, #1660ee, rgba(255, 107, 107, 0) 20%),
-    radial-gradient(circle at 30% 20%, #4ecdc4, rgba(78, 205, 196, 0) 50%),
-    radial-gradient(circle at 50% 30%, #2b7732, rgba(255, 230, 109, 0) 50%),
-    linear-gradient(to bottom right, #9f1ce7, #4ecdc4);
+    background: radial-gradient(circle at 20% 80%, #ff6b6b, rgba(255, 107, 107, 0) 70%),
+    radial-gradient(circle at 80% 20%, #4ecdc4, rgba(78, 205, 196, 0) 70%),
+    radial-gradient(circle at 50% 50%, #ffe66d, rgba(255, 230, 109, 0) 60%),
+    linear-gradient(to bottom right, #ff6b6b, #4ecdc4);
     background-blend-mode: overlay;
 }
 

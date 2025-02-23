@@ -1,5 +1,6 @@
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 interface Props {
   image: string;
@@ -19,7 +20,7 @@ const ProductCard = ({
   className,
 }: Props) => {
   return (
-    <Card className={className}>
+    <Card className={cn(className, "hover:scale-105")}>
       <div className={"rounded-lg"}>
         <Image
           className={"rounded-t-lg"}

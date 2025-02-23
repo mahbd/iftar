@@ -9,21 +9,6 @@ import OurItemsSection from "@/app/(sections)/OurItems";
 import OurPackagesSection from "@/app/(sections)/OurPackages";
 
 export default function Home() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: { y: 0, opacity: 1 },
-  };
-
   return (
     <div>
       <motion.header

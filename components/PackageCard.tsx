@@ -14,6 +14,7 @@ interface Props {
   description: string;
   price: number;
   discountedPrice: number;
+  className?: string;
 }
 
 const PackageCard = ({
@@ -22,6 +23,7 @@ const PackageCard = ({
   description,
   price,
   discountedPrice,
+  className,
 }: Props) => {
   return (
     <Dialog>
@@ -32,12 +34,13 @@ const PackageCard = ({
           description={description}
           price={price}
           discountedPrice={discountedPrice}
+          className={className}
         />
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
           <DialogTitle className={"text-start"}>Items</DialogTitle>
-          <div className={"grid grid-cols-2 gap-3"}>
+          <div className={"grid grid-cols-2 gap-2"}>
             <PackageItemCard name={name} image={"/images/ramadan-banner.jpg"} />
             <PackageItemCard name={name} image={"/images/ramadan-banner.jpg"} />
             <PackageItemCard name={name} image={"/images/ramadan-banner.jpg"} />

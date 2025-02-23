@@ -1,9 +1,4 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import Image from "next/image";
 
 interface Props {
@@ -12,6 +7,7 @@ interface Props {
   description: string;
   price: number;
   discountedPrice: number;
+  className?: string;
 }
 
 const ProductCard = ({
@@ -20,9 +16,10 @@ const ProductCard = ({
   description,
   price,
   discountedPrice,
+  className,
 }: Props) => {
   return (
-    <Card>
+    <Card className={className}>
       <div className={"rounded-lg"}>
         <Image
           className={"rounded-t-lg"}
@@ -32,16 +29,24 @@ const ProductCard = ({
           height={"1020"}
         />
       </div>
-      <CardContent>
-        <CardTitle className={"text-center"}>{name}</CardTitle>
-        <CardDescription>{description}</CardDescription>
-        <div className={"flex gap-1"}>
-          <p className={"text-sm md:text-lg line-through text-red-500"}>
-            {price}
-          </p>
-          <p className={"text-lg font-bold"}>{discountedPrice}</p>
+      <div>
+        <div className={"flex justify-between"}>
+          <div className={"text-center font-bold"}>{name}</div>
+          <div className={"flex gap-1"}>
+            <p
+              className={
+                "font-bold text-sm md:text-lg line-through text-gray-700"
+              }
+            >
+              {price}
+            </p>
+            <p className={"text-lg font-bold"}>
+              {discountedPrice} <span className={"text-yellow-900"}>৳</span>
+            </p>
+          </div>
         </div>
-      </CardContent>
+        <div className={"w-full text-gray-900 text-start"}>{description}</div>
+      </div>
     </Card>
   );
 };

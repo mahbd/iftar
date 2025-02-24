@@ -26,8 +26,8 @@ const ProductCard = ({
           className={"rounded-t-lg"}
           src={image}
           alt={name}
-          width={"1920"}
-          height={"1020"}
+          width={"600"}
+          height={"400"}
         />
       </div>
       <div>

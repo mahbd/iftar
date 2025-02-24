@@ -3,9 +3,9 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import TeamMemberCard from "@/components/TeamMemberCard";
 import OurItemsSection from "@/app/(sections)/OurItems";
 import OurPackagesSection from "@/app/(sections)/OurPackages";
+import TeamMembers from "@/app/(sections)/TeamMembers";
 
 export default function Home() {
   return (
@@ -60,17 +60,7 @@ export default function Home() {
         voluptates?
       </p>
 
-      <h2 className="text-center font-bold text-3xl md:text-5xl text-white drop-shadow-md bg-orange-400 p-2 pb-3 rounded-lg">
-        Our Team
-      </h2>
-      <div className={"grid grid-cols-2 md:grid-cols-4 gap-3 mt-5"}>
-        <TeamMemberCard />
-        <TeamMemberCard />
-        <TeamMemberCard />
-        <TeamMemberCard />
-        <TeamMemberCard />
-        <TeamMemberCard />
-      </div>
+      <TeamMembers />
 
       <h2 className="text-center mt-5 font-bold text-3xl md:text-5xl text-white drop-shadow-md bg-orange-400 p-2 pb-3 rounded-lg">
         Coming Soon...

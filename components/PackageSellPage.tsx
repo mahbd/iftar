@@ -14,12 +14,16 @@ const PackageSellPage = () => {
         name={"Couple Package"}
         itemCount={coupleAmount}
         setItemCount={setCoupleAmount}
+        price={110}
+        discountedPrice={100}
       />
       <BuyItemRow
         image={"/images/ramadan-banner.jpg"}
         name={" Single Package"}
         itemCount={singleAmount}
         setItemCount={setSingleAmount}
+        price={60}
+        discountedPrice={50}
       />
       <div className={"text-end font-bold text-lg pe-9"}>
         Total Amount: {totalPrice}

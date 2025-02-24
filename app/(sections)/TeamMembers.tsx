@@ -7,6 +7,7 @@ const TeamMembers = () => {
       name: "John Doe",
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, voluptates.",
+      link: "",
     },
     {
       image: "/team/mahmudul.jpg",
@@ -27,18 +28,21 @@ const TeamMembers = () => {
       name: "MD Rakib Hasan",
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, voluptates.",
+      link: "",
     },
     {
       image: "/images/canvas-banner.jpg",
       name: "John Doe",
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, voluptates.",
+      link: "",
     },
     {
       image: "/images/canvas-banner.jpg",
       name: "John Doe",
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, voluptates.",
+      link: "",
     },
   ];
   return (

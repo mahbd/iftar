@@ -2,22 +2,79 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { MinusIcon, PlusIcon } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { useEffect } from "react";
+import { OrderedItem } from "@prisma/client";
 
 interface Props {
   image: string;
   name: string;
   step?: number;
   itemCount: number;
+  price: number;
+  discountedPrice: number;
   setItemCount: (count: number) => void;
 }
 
 const BuyItemRow = ({
   image,
   name,
+  price,
+  discountedPrice,
   step = 1,
   itemCount,
   setItemCount,
 }: Props) => {
+  useEffect(() => {
+    const orders = sessionStorage.getItem("orders");
+    if (orders) {
+      try {
+        const parsedOrders = JSON.parse(orders) as OrderedItem[];
+        const order = parsedOrders.find((order) => order.name === name);
+        if (order) {
+          setItemCount(order.quantity);
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
+  }, [name]);
+
+  useEffect(() => {
+    const orders = sessionStorage.getItem("orders");
+    if (orders) {
+      try {
+        const parsedOrders = JSON.parse(orders) as OrderedItem[];
+        const order = parsedOrders.find((order) => order.name === name);
+        if (order) {
+          order.quantity = itemCount;
+          sessionStorage.setItem("orders", JSON.stringify(parsedOrders));
+        } else {
+          sessionStorage.setItem(
+            "orders",
+            JSON.stringify([
+              ...parsedOrders,
+              {
+                name,
+                quantity: itemCount,
+                price,
+                discountedPrice,
+              } as OrderedItem,
+            ]),
+          );
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    } else {
+      sessionStorage.setItem(
+        "orders",
+        JSON.stringify([
+          { name, quantity: itemCount, price, discountedPrice } as OrderedItem,
+        ]),
+      );
+    }
+  }, [itemCount, name, price, discountedPrice]);
+
   return (
     <div
       className={
@@ -49,7 +106,7 @@ const BuyItemRow = ({
           }
           value={itemCount}
           onClick={(e) => setItemCount(parseInt(e.currentTarget.value))}
-          type={"number"}
+          type={"text"}
         />
         <Button
           size={"icon"}

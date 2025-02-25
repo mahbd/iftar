@@ -1,6 +1,7 @@
 import ContactInformation from "@/components/ContactInformation";
 import { auth, signIn } from "@/prisma/auth";
 import prisma from "@/prisma/client";
+import Head from "next/head";
 
 const ContactPage = async () => {
   const session = await auth();
@@ -18,6 +19,12 @@ const ContactPage = async () => {
   if (user.isSpammer) {
     return (
       <div className={"flex h-screen justify-center items-center"}>
+        <Head>
+          <title>
+            Enter Contact Information | Iftar Delights - Ramadan-exclusive Food
+            Delivery Service
+          </title>
+        </Head>
         <h1 className={"text-lg md:text-2xl font-bold text-red-700"}>
           Spam Detected
         </h1>

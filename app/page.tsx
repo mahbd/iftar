@@ -1,15 +1,51 @@
-"use client";
-
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import OurItemsSection from "@/app/(sections)/OurItems";
 import OurPackagesSection from "@/app/(sections)/OurPackages";
 import TeamMembers from "@/app/(sections)/TeamMembers";
+import Head from "next/head";
 
 export default function Home() {
   return (
     <div className={"max-w-7xl"}>
+      <Head>
+        <title>Iftar Delights - Delicious & Hygienic Ramadan Meals</title>
+        <meta
+          name="description"
+          content="Enjoy homemade and hygienic Iftar meals at Begum Rokeya University, Rangpur. Order delicious Ramadan delights now!"
+        />
+        <meta
+          name="keywords"
+          content="Iftar, Ramadan, homemade food, Begum Rokeya University, Rangpur, food delivery"
+        />
+        <meta name="author" content="Iftar Delights Team" />
+
+        {/* Open Graph Meta Tags for Social Media */}
+        <meta
+          property="og:title"
+          content="Iftar Delights - Delicious & Hygienic Ramadan Meals"
+        />
+        <meta
+          property="og:description"
+          content="Enjoy homemade and hygienic Iftar meals at Begum Rokeya University, Rangpur."
+        />
+        <meta property="og:image" content="/images/iftar-delights.jpg" />
+        <meta property="og:url" content="https://brur-iftar.me" />
+        <meta property="og:type" content="website" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Iftar Delights - Delicious & Hygienic Ramadan Meals"
+        />
+        <meta
+          name="twitter:description"
+          content="Enjoy homemade and hygienic Iftar meals at Begum Rokeya University, Rangpur."
+        />
+        <meta name="twitter:image" content="/images/iftar-delights.jpg" />
+      </Head>
       <div
         className={
           " bg-cyan-600 p-2 backdrop-blur-lg shadow-xl rounded-lg my-3"

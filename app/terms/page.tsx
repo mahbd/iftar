@@ -1,6 +1,14 @@
+import Head from "next/head";
+
 const TermsOfService = () => {
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
+      <Head>
+        <title>
+          Terms of Service | Iftar Delights - Ramadan-exclusive Food Delivery
+          Service
+        </title>
+      </Head>
       <div className="bg-white p-8 rounded-2xl shadow-lg max-w-3xl w-full">
         <h1 className="text-3xl font-bold text-gray-900 mb-4">
           Terms of Service

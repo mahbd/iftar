@@ -1,20 +1,21 @@
 import ContactInformation from "@/components/ContactInformation";
-import { auth, signIn } from "@/prisma/auth";
+import { auth } from "@/prisma/auth";
 import prisma from "@/prisma/client";
 import Head from "next/head";
+import SignInUser from "@/app/contact/SignInUser";
 
 const ContactPage = async () => {
   const session = await auth();
-  if (!session) {
-    return signIn(undefined, { redirectTo: "/contact", redirect: true });
-  }
-  const user = await prisma.user.findUnique({
-    where: {
-      id: session.user?.id,
-    },
-  });
-  if (!user) {
-    return signIn(undefined, { redirectTo: "/contact", redirect: true });
+  const user =
+    session &&
+    (await prisma.user.findUnique({
+      where: {
+        id: session.user?.id,
+      },
+    }));
+
+  if (!session || !user) {
+    return <SignInUser />;
   }
   if (user.isSpammer) {
     return (

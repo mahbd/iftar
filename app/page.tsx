@@ -46,18 +46,17 @@ export default function Home() {
         Our Mission
       </h2>
       <p className="text-black text-justify p-3 bg-white/30 pb-5">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum repellat
-        sequi vero. Ab architecto delectus deserunt, expedita mollitia provident
-        quisquam sequi. A asperiores autem deleniti distinctio eligendi, magnam
-        mollitia numquam optio perspiciatis ratione reiciendis, rem velit
-        voluptatum? Alias, animi atque, dolores dolorum fugiat harum iusto
-        mollitia neque quos similique, soluta ut velit. A animi debitis
-        distinctio doloremque dolores eos esse harum labore obcaecati quae quia,
-        rem sequi soluta tempore veritatis voluptate voluptatibus. Autem,
-        distinctio fugiat praesentium provident quasi temporibus voluptate. Amet
-        animi aperiam at consequuntur dolore doloremque, iure labore, minus
-        molestiae nobis non nulla pariatur perferendis ratione saepe veritatis
-        voluptates?
+        বর্তমানের এই যান্ত্রিক যুগ এবং আর্টিফিশিয়াল ও ভেজালযুক্ত খাবারের আড়ালে
+        আমরা ঘরোয়া এবং সাস্থ্যকর খাবারের স্বাদ প্রায় ভুলেই গিয়েছি। সেই ঘরোয়া
+        স্বাদ আবারও ফিরিয়ে আনতে বেগম রোকেয়া বিশ্ববিদ্যালয়ের শিক্ষার্থীদের
+        উদ্যোগে আপনাদের জন‍য চলে এলো ইফতার ডিলাইট। রমজান তো চলেই এলো। আর এই
+        রমজানের ইফতারটা আপনার সাধ‍যের মাঝে আরেকটু স্পেশাল আর মসলাদার করতে আমারা
+        নিয়ে এসেছি ইফতারের সকল ধরনের আয়োজন যেমন লাচ্ছি থেকে শুরু করে পিয়াজু,
+        বেগুনি, আলুর চপ, ছোলা বুন্দিয়া সহ আরও অনেক কিছু। এছাড়াও স্পেশাল এডিশন
+        হিসেবে পাচ্ছেন সিঙ্গেল ও কাপল প্লেটার যেখানের প্রতিটি আইটেম কাস্টমাইজের
+        সুযোগ থাকছে। এছাড়াও ১০০ টাকার উপরে অর্ডার করলে ৫% ডিসকাউন্ট তো থাকছেই।
+        বাজেট ফ্রেন্ডলি খাবারের সাথে পরিচ্ছন্নতা বজায় রেখে কুয়ালিটিফুল খাবার
+        আপনাদের কাছে পৌঁছে দেওয়াই আমাদের প্রধান উদ্দেশ্য।
       </p>
 
       <TeamMembers />

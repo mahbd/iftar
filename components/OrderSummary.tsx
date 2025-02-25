@@ -4,14 +4,13 @@ import { OrderedItem } from "@prisma/client";
 import { useState } from "react";
 import { createOrder } from "@/lib/order.actions";
 import { Trash2 } from "lucide-react";
+import Spinner from "@/components/Spinner";
 
-interface Props {
-  setIsOpen: (isOpen: boolean) => void;
-}
-
-const OrderSummary = ({ setIsOpen }: Props) => {
-  const [isOpen2, setIsOpen2] = useState(false);
+const OrderSummary = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const [reload, setReload] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
   const orders_str = sessionStorage.getItem("orders");
   let orders: OrderedItem[] = [];
   if (orders_str) {
@@ -29,12 +28,12 @@ const OrderSummary = ({ setIsOpen }: Props) => {
   const discountedTotal = total - Math.floor(total / 100) * 5;
 
   return (
-    <Dialog open={isOpen2} onOpenChange={setIsOpen2}>
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger className={"w-full"}>
         <button
           className="w-full rounded-lg bg-green-800 py-3 px-6 font-semibold text-white transition-all hover:bg-[#ff5252] hover:shadow-lg hover:shadow-[#ff6b6b]/30"
           onClick={() => {
-            setIsOpen2(true);
+            setIsOpen(true);
           }}
         >
           Submit
@@ -89,11 +88,10 @@ const OrderSummary = ({ setIsOpen }: Props) => {
             </div>
             <div className={"flex justify-end mt-4"}>
               <Button
+                disabled={isLoading}
                 variant={"success"}
                 onClick={async () => {
-                  setIsOpen2(false);
-                  setIsOpen(false);
-                  sessionStorage.removeItem("orders");
+                  setIsLoading(true);
                   try {
                     const res = await createOrder({
                       name: localStorage.getItem("name") || "",
@@ -102,15 +100,24 @@ const OrderSummary = ({ setIsOpen }: Props) => {
                       finalPrice: discountedTotal,
                       items: orders,
                     });
-                    console.log(res);
-                    alert("Order created successfully");
+                    if (!res) {
+                      setIsLoading(false);
+                      console.error("Failed to place order");
+                      alert("Failed to place order");
+                      return;
+                    } else {
+                      sessionStorage.removeItem("orders");
+                      window.location.pathname = "/success";
+                    }
                   } catch (e) {
                     console.error(e);
-                    alert("Failed to create order");
+                    setIsLoading(false);
+                    alert(e);
+                    alert("Failed to place order Server Error");
                   }
                 }}
               >
-                Confirm
+                Confirm {isLoading && <Spinner />}
               </Button>
             </div>
           </div>

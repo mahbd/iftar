@@ -1,9 +1,10 @@
 import BuyItemRow from "@/components/BuyItemRow";
-import { ChevronsDown } from "lucide-react";
+import { ArrowBigRight, ChevronsDown } from "lucide-react";
 import { useEffect, useState } from "react";
-import ContactInformation from "@/components/ContactInformation";
 import { items } from "@/lib/data";
 import { OrderedItem } from "@prisma/client";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const CustomSellPage = () => {
   const [itemsCount, setItemsCount] = useState(Array(items.length).fill(0));
@@ -63,7 +64,14 @@ const CustomSellPage = () => {
       <div className={"text-end font-bold text-lg pe-9 -mt-3"}>
         With Discount: {totalPrice - Math.floor(totalPrice / 100) * 5}
       </div>
-      <ContactInformation />
+      <div className={"flex justify-center"}>
+        <Link href={"/contact"}>
+          <Button size={"lg"}>
+            Provide contact information{" "}
+            <ArrowBigRight className={"h-12 w-12"} />
+          </Button>
+        </Link>
+      </div>
     </div>
   );
 };

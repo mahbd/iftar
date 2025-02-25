@@ -3,6 +3,7 @@
 import { OrderedItem } from "@prisma/client";
 import prisma from "@/prisma/client";
 import axios from "axios";
+import { auth } from "@/prisma/auth";
 
 type OrderForm = {
   name: string;
@@ -12,13 +13,28 @@ type OrderForm = {
   items?: OrderedItem[];
 };
 
-export const createOrder = async (order: OrderForm) => {
+export const createOrder = async (order: OrderForm): Promise<boolean> => {
+  const session = await auth();
+  if (!session || !session.user || !session.user.id) {
+    return false;
+  }
+  const updatedUserPromise = prisma.user.update({
+    where: {
+      id: session.user.id,
+    },
+    data: {
+      name: order.name,
+      phone: order.phone,
+      location: order.location,
+    },
+  });
   const items = order.items?.filter((item) => item.quantity > 0);
   delete order.items;
   if (items?.length && items.length > 0) {
-    const res = await prisma.order.create({
+    const createOrderPromise = prisma.order.create({
       data: {
         ...order,
+        userId: session.user.id,
         orderedItems: {
           create: items,
         },
@@ -33,13 +49,16 @@ export const createOrder = async (order: OrderForm) => {
       },
     });
 
-    let message = `Order No: ${totalOrders}\nName: ${order.name}\nPhone: ${order.phone}\nLocation: ${order.location}\nTotal: ${order.finalPrice}`;
+    let message = `Order No: ${totalOrders + 1}\nName: ${order.name}\nPhone: ${order.phone}\nLocation: ${order.location}\nTotal: ${order.finalPrice}`;
     for (const item of items) {
       message += `\n${item.name}: ${item.quantity} x ${item.discountedPrice} = ${item.quantity * item.discountedPrice}`;
     }
     await sendMessage(message);
-    return res;
+    await updatedUserPromise;
+    await createOrderPromise;
+    return true;
   }
+  return false;
 };
 
 const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;

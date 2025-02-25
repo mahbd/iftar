@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import BuyItemRow from "@/components/BuyItemRow";
-import ContactInformation from "@/components/ContactInformation";
 import { OrderedItem } from "@prisma/client";
 import { packages } from "@/lib/data";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { ArrowBigRight } from "lucide-react";
 
 const PackageSellPage = () => {
   const [itemsCount, setItemsCount] = useState(Array(packages.length).fill(0));
@@ -56,7 +58,14 @@ const PackageSellPage = () => {
       <div className={"text-end font-bold text-lg pe-9 -mt-3"}>
         With Discount: {totalPrice - Math.floor(totalPrice / 100) * 5}
       </div>
-      <ContactInformation />
+      <div className={"flex justify-center"}>
+        <Link href={"/contact"}>
+          <Button size={"lg"}>
+            Provide contact information{" "}
+            <ArrowBigRight className={"h-12 w-12"} />
+          </Button>
+        </Link>
+      </div>
     </div>
   );
 };

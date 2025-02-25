@@ -2,25 +2,10 @@ import BuyItemRow from "@/components/BuyItemRow";
 import { ChevronsDown } from "lucide-react";
 import { useState } from "react";
 import ContactInformation from "@/components/ContactInformation";
+import { items } from "@/lib/data";
 
 const CustomSellPage = () => {
   const [itemsCount, setItemsCount] = useState(Array(2).fill(0));
-
-  const items = [
-    {
-      image: "/images/ramadan-banner.jpg",
-      name: "ছোলা (kg)",
-      price: 120,
-      discountedPrice: 100,
-      step: 0.25,
-    },
-    {
-      image: "/images/ramadan-banner.jpg",
-      name: "বেগুনি",
-      price: 5,
-      discountedPrice: 4,
-    },
-  ];
 
   let totalPrice = 0;
   itemsCount.forEach((count, index) => {

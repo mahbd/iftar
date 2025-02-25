@@ -72,7 +72,7 @@ export default function Home() {
             alt={"fjdslajkflldskjf"}
             height={"1024"}
             width={"1920"}
-            className={"h-48 w-96"}
+            className={"h-48 w-96 rounded-lg"}
           />
           <p
             className={"-mt-24 mb-20 text-4xl font-bold text-white text-center"}
@@ -88,8 +88,11 @@ export default function Home() {
           }
         >
           <h2 className={"text-2xl font-bold"}>Contact Us</h2>
-          <p>Phone: 123-456-7890</p>
-          <p>Email:hhh@gmail.com</p>
+          <p>Phone: +8801522106307</p>
+          <p>
+            Email:{" "}
+            <a href="mailto:mahmudula2000@gmail.com">mahmudula2000@gmail.com</a>
+          </p>
         </div>
         <div
           className={
@@ -105,10 +108,16 @@ export default function Home() {
             "text-center text-white bg-gradient-to-r from-rose-400 to-blue-400 bg-clip-text hidden md:block"
           }
         >
-          <h2 className={"text-2xl font-bold"}>Social Media</h2>
-          <p>Facebook</p>
-          <p>Instagram</p>
-          <p>Twitter</p>
+          <h2 className={"text-2xl font-bold"}>Miscellaneous</h2>
+          <Link href={"/privacy"}>
+            <p>Privacy Policy</p>
+          </Link>
+          <Link href={"/terms"}>
+            <p>Terms and Conditions</p>
+          </Link>
+          <Link href={"/delete-guideline"}>
+            <p>Delete Guideline</p>
+          </Link>
         </div>
       </footer>
     </div>

@@ -3,46 +3,40 @@ import TeamMemberCard from "@/components/TeamMemberCard";
 const TeamMembers = () => {
   const members = [
     {
-      image: "/images/canvas-banner.jpg",
-      name: "John Doe",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, voluptates.",
-      link: "",
+      image: "/team/rounak.jpg",
+      name: "Rounak Jahan Jeffrey",
+      description: "Artist and cooking expert.",
+      link: "https://www.facebook.com/share/15UQ3KtMF6/",
     },
     {
       image: "/team/mahmudul.jpg",
       name: "Mahmudul Alam",
-      description:
-        "Mahmudul Alam is a skilled web developer, app developer, and competitive programmer.",
+      description: "Web & app developer",
       link: "https://github.com/mahbd",
     },
     {
       image: "/team/rony.jpg",
       name: "Md. Rony Islam",
-      description:
-        "Md. Rony Islam is a skilled teacher and cybersecurity expert.",
+      description: "Customer service expert and social media manager.",
       link: "https://www.facebook.com/md.rony.islam.879166",
     },
     {
       image: "/team/rakib.jpg",
       name: "MD Rakib Hasan",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, voluptates.",
+      description: "Customer service expert and social media manager.",
       link: "",
     },
     {
-      image: "/images/canvas-banner.jpg",
-      name: "John Doe",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, voluptates.",
-      link: "",
+      image: "/team/monir.jpg",
+      name: "Moniruzzaman Masum",
+      description: "Delivery expert and customer service expert.",
+      link: "https://t.me/Masum1905006",
     },
     {
-      image: "/images/canvas-banner.jpg",
-      name: "John Doe",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, voluptates.",
-      link: "",
+      image: "/team/rashel.jpg",
+      name: "Asaduzzaman Rashel",
+      description: "Delivery expert and customer service expert.",
+      link: "https://www.facebook.com/Asaduzzamanrashel1998",
     },
   ];
   return (

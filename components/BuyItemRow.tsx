@@ -31,21 +31,6 @@ const BuyItemRow = ({
         const parsedOrders = JSON.parse(orders) as OrderedItem[];
         const order = parsedOrders.find((order) => order.name === name);
         if (order) {
-          setItemCount(order.quantity);
-        }
-      } catch (e) {
-        console.error(e);
-      }
-    }
-  }, [name]);
-
-  useEffect(() => {
-    const orders = sessionStorage.getItem("orders");
-    if (orders) {
-      try {
-        const parsedOrders = JSON.parse(orders) as OrderedItem[];
-        const order = parsedOrders.find((order) => order.name === name);
-        if (order) {
           order.quantity = itemCount;
           sessionStorage.setItem("orders", JSON.stringify(parsedOrders));
         } else {
@@ -78,7 +63,7 @@ const BuyItemRow = ({
   return (
     <div
       className={
-        "flex justify-between items-center w-80 rounded-2xl bg-white/30 p-2 backdrop-blur-lg shadow-xl"
+        "flex justify-between items-center rounded-2xl bg-white/30 p-2 backdrop-blur-lg shadow-xl w-full"
       }
     >
       <Image
@@ -102,11 +87,11 @@ const BuyItemRow = ({
         <Input
           className={
             "border-2 border-gray-800 mx-1 text-black" +
-            ` ${itemCount.toString().length === 1 ? "w-10" : "w-16"}`
+            ` ${itemCount.toString().length === 1 ? "w-10" : "w-16"} md:w-20`
           }
           value={itemCount}
-          onClick={(e) => setItemCount(parseInt(e.currentTarget.value))}
-          type={"text"}
+          onChange={(e) => setItemCount(parseInt(e.currentTarget.value))}
+          type={"number"}
         />
         <Button
           size={"icon"}

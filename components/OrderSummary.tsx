@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { OrderedItem } from "@prisma/client";
 import { useState } from "react";
 import { createOrder } from "@/lib/order.actions";
+import { Trash2 } from "lucide-react";
 
 interface Props {
   setIsOpen: (isOpen: boolean) => void;
@@ -10,6 +11,7 @@ interface Props {
 
 const OrderSummary = ({ setIsOpen }: Props) => {
   const [isOpen2, setIsOpen2] = useState(false);
+  const [reload, setReload] = useState(false);
   const orders_str = sessionStorage.getItem("orders");
   let orders: OrderedItem[] = [];
   if (orders_str) {
@@ -27,7 +29,7 @@ const OrderSummary = ({ setIsOpen }: Props) => {
   const discountedTotal = total - Math.floor(total / 100) * 5;
 
   return (
-    <Dialog open={isOpen2}>
+    <Dialog open={isOpen2} onOpenChange={setIsOpen2}>
       <DialogTrigger className={"w-full"}>
         <button
           className="w-full rounded-lg bg-green-800 py-3 px-6 font-semibold text-white transition-all hover:bg-[#ff5252] hover:shadow-lg hover:shadow-[#ff6b6b]/30"
@@ -62,6 +64,14 @@ const OrderSummary = ({ setIsOpen }: Props) => {
                     {order.price * order.quantity}
                   </span>
                   {order.discountedPrice * order.quantity}
+                  <Trash2
+                    className={"ps-2 w-7 h-7 text-red-500 inline"}
+                    onClick={() => {
+                      orders[index].quantity = 0;
+                      sessionStorage.setItem("orders", JSON.stringify(orders));
+                      setReload(!reload);
+                    }}
+                  />
                 </p>
               </div>
             ))}

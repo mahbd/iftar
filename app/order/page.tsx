@@ -9,20 +9,19 @@ const OrderPage = () => {
   const [predefined, setPredefined] = useState(false);
   const [custom, setCustom] = useState(false);
   return (
-    <div>
+    <div className={"flex flex-col h-auto w-full px-3 md:w-96 -mt-5"}>
       <div
-        className={
-          "flex flex-col h-screen justify-center items-center gap-5 w-80 md:w-96"
-        }
+        className={"flex flex-col h-screen justify-center items-center gap-5"}
       >
-        <h1 className={"text-xl md:text-4xl font-bold"}>
+        <h1 className={"text-lg md:text-2xl font-bold"}>
           Select your packages
         </h1>
         {!custom && (
           <Button
-            size={"xxl"}
+            size={"xl"}
             onClick={() => setPredefined(!predefined)}
-            className={"w-80 md:w-96"}
+            className={"w-full"}
+            variant={predefined ? "yellow" : "success"}
           >
             Packages
           </Button>
@@ -30,9 +29,10 @@ const OrderPage = () => {
         {predefined && <PackageSellPage />}
         {!predefined && (
           <Button
-            size={"xxl"}
+            size={"xl"}
             onClick={() => setCustom(!custom)}
-            className={"w-80"}
+            className={"w-full"}
+            variant={custom ? "yellow" : "success"}
           >
             Custom Package
           </Button>

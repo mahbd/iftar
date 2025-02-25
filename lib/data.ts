@@ -1,8 +1,27 @@
+export const packages = [
+  {
+    image: "/images/ramadan-banner.jpg",
+    name: "কাপল প্যাকেজ",
+    description: "কাপল প্যাকেজে পাচ্ছেন দুইজনের জন্য সম্পূর্ণ প্যাকেজ",
+    price: 110,
+    discountedPrice: 100,
+    className: "hover:shadow-2xl transition-shadow duration-300",
+  },
+  {
+    image: "/images/ramadan-banner.jpg",
+    name: "সিঙ্গেল প্যাকেজ",
+    description: "সিঙ্গেল প্যাকেজে পাচ্ছেন একজনের জন্য সম্পূর্ণ প্যাকেজ",
+    price: 60,
+    discountedPrice: 50,
+    className: "hover:shadow-2xl transition-shadow duration-300",
+  },
+];
+
 export const items = [
   {
     image: "/products/chola.jpg",
     name: "ছোলা",
-    description: "Very Tasty ginger",
+    description: "সম্পূর্ণ নির্ভেজাল ঘরে তৈরি ছোলা",
     price: 160,
     discountedPrice: 150,
     step: 0.25,
@@ -11,7 +30,7 @@ export const items = [
   {
     image: "/products/muri.jpg",
     name: "মুড়ি",
-    description: "Very Tasty ginger",
+    description: "টাটকা এবং মুচমুচে মুড়ি",
     price: 80,
     discountedPrice: 60,
     step: 0.25,
@@ -20,7 +39,7 @@ export const items = [
   {
     image: "/products/ginger-e.png",
     name: "পেঁয়াজি",
-    description: "Very Tasty ginger",
+    description: "পেয়াজ এবং খেসারি ডালের তৈরি পেঁয়াজি",
     price: 7,
     discountedPrice: 5,
     className: "hover:shadow-2xl transition-shadow duration-300",
@@ -28,7 +47,7 @@ export const items = [
   {
     image: "/products/potato.jpg",
     name: "আলুর চপ",
-    description: "Very Tasty ginger",
+    description: "মুরগির মাংসের পুর দেওয়া সুস্বাদু আলুর চপ",
     price: 15,
     discountedPrice: 10,
     className: "hover:shadow-2xl transition-shadow duration-300",
@@ -44,7 +63,7 @@ export const items = [
   {
     image: "/products/begun.jpg",
     name: "বেগুনি",
-    description: "Very Tasty ginger",
+    description: "মচমচে এবং সুস্বাদু বেগুনি",
     price: 6,
     discountedPrice: 5,
     className: "hover:shadow-2xl transition-shadow duration-300",
@@ -52,7 +71,7 @@ export const items = [
   {
     image: "/products/bunia.jpg",
     name: "বুন্দিয়া",
-    description: "Very Tasty ginger",
+    description: "সম্পূর্ণ ঘরে তৈরি, সুস্বাদু বুন্দিয়া",
     price: 200,
     discountedPrice: 180,
     step: 0.25,
@@ -61,7 +80,7 @@ export const items = [
   {
     image: "/products/date.jpg",
     name: "খেজুর",
-    description: "Very Tasty ginger",
+    description: "মানসম্পন্ন,অথেন্টিক খেজুর",
     price: 10,
     discountedPrice: 5,
     className: "hover:shadow-2xl transition-shadow duration-300",
@@ -69,7 +88,7 @@ export const items = [
   {
     image: "/products/juice.webp",
     name: "লাচ্ছি",
-    description: "Very Tasty ginger",
+    description: "খাঁটি দুধ এবং দই এর তৈরি সুস্বাদু লাচ্ছি",
     price: 50,
     discountedPrice: 45,
     className: "hover:shadow-2xl transition-shadow duration-300",
@@ -77,7 +96,7 @@ export const items = [
   {
     image: "/products/jilapi.jpg",
     name: "জিলাপি",
-    description: "Very Tasty ginger",
+    description: "সুস্বাদু ও মুচমুচে জিলাপি",
     price: 200,
     discountedPrice: 180,
     step: 0.25,
@@ -86,7 +105,7 @@ export const items = [
   {
     image: "/products/chira-vaja.jpg",
     name: "চিড়া ভাজা",
-    description: "Very Tasty ginger",
+    description: "টাটকা এবং মুচমুচে চিড়া ভাজা",
     price: 80,
     discountedPrice: 60,
     step: 0.25,
@@ -95,7 +114,7 @@ export const items = [
   {
     image: "/products/rosun-chop.jpg",
     name: "রসুনের চপ",
-    description: "Very Tasty ginger",
+    description: "রসুনের তৈরি সুস্বাদু রসুনের চপ",
     price: 7,
     discountedPrice: 5,
     className: "hover:shadow-2xl transition-shadow duration-300",

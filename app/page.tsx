@@ -9,7 +9,7 @@ import TeamMembers from "@/app/(sections)/TeamMembers";
 
 export default function Home() {
   return (
-    <div>
+    <div className={"max-w-7xl"}>
       <div
         className={
           " bg-cyan-600 p-2 backdrop-blur-lg shadow-xl rounded-lg my-3"

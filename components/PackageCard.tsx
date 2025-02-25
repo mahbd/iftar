@@ -7,6 +7,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import PackageItemCard from "@/components/PackageItemCard";
+import { useState } from "react";
 
 interface Props {
   image: string;
@@ -25,8 +26,9 @@ const PackageCard = ({
   discountedPrice,
   className,
 }: Props) => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
-    <Dialog>
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger>
         <ProductCard
           image={image}
@@ -35,6 +37,7 @@ const PackageCard = ({
           price={price}
           discountedPrice={discountedPrice}
           className={className}
+          setDialogOpen={setIsOpen}
         />
       </DialogTrigger>
       <DialogContent>

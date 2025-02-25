@@ -17,9 +17,9 @@ const ContactInformation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <Dialog open={isOpen}>
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger>
-        <Button className={"w-80"} onClick={() => setIsOpen(true)}>
+        <Button size={"lg"} onClick={() => setIsOpen(true)}>
           Provide contact information <ArrowBigRight className={"h-12 w-12"} />
         </Button>
       </DialogTrigger>
@@ -79,7 +79,7 @@ const ContactInformation = () => {
                 </label>
                 <select
                   id="location"
-                  value={location}
+                  defaultValue={location}
                   className="w-full rounded-lg border border-[#4ecdc4]/30 bg-white/40 px-4 py-2 text-[#2d3436] placeholder-[#4ecdc4]/60 focus:border-[#4ecdc4] focus:ring-2 focus:ring-[#ffe66d]/50"
                   onChange={(e) => {
                     setLocation(e.currentTarget.value);
@@ -89,9 +89,9 @@ const ContactInformation = () => {
                   <option value="" disabled selected>
                     Select your location
                   </option>
-                  <option value="park-more">Abu Sayed Chattar</option>
-                  <option value="sardarpara">Sardar Para</option>
-                  <option value="chakbazar">Chak Bazar</option>
+                  <option value="Abu Sayed Chattar">Abu Sayed Chattar</option>
+                  <option value="Sardar Para">Sardar Para</option>
+                  <option value="Chak Bazar">Chak Bazar</option>
                 </select>
               </div>
 

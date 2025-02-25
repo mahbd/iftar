@@ -23,7 +23,7 @@ export default function OurPackagesSection() {
       <h2 className="text-center mt-5 font-bold text-3xl md:text-5xl text-white drop-shadow-md bg-orange-400 p-2 pb-3 rounded-lg">
         Our Packages
       </h2>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 p-4">
+      <div className="grid grid-cols-2 md:flex md:justify-center gap-3 p-4">
         {packages.map((pkg, i) => (
           <PackageCard
             key={i}

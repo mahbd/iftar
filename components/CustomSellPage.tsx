@@ -1,20 +1,42 @@
 import BuyItemRow from "@/components/BuyItemRow";
 import { ChevronsDown } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ContactInformation from "@/components/ContactInformation";
 import { items } from "@/lib/data";
+import { OrderedItem } from "@prisma/client";
 
 const CustomSellPage = () => {
-  const [itemsCount, setItemsCount] = useState(Array(2).fill(0));
+  const [itemsCount, setItemsCount] = useState(Array(items.length).fill(0));
 
   let totalPrice = 0;
   itemsCount.forEach((count, index) => {
     totalPrice += items[index].discountedPrice * count;
   });
 
+  useEffect(() => {
+    const orders = sessionStorage.getItem("orders");
+    if (orders) {
+      try {
+        const parsedOrders = JSON.parse(orders) as OrderedItem[];
+        for (const orderedItem of parsedOrders) {
+          const packageIndex = items.findIndex(
+            (item) => item.name === orderedItem.name,
+          );
+          if (packageIndex !== -1) {
+            const newItemsCount = [...itemsCount];
+            newItemsCount[packageIndex] = orderedItem.quantity;
+            setItemsCount(newItemsCount);
+          }
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
   return (
-    <div>
-      <div className={"flex flex-col gap-3 w-80 max-h-[60vh] overflow-y-auto"}>
+    <div className={"flex flex-col w-full gap-3 "}>
+      <div className={"flex flex-col gap-2 max-h-[50vh] overflow-y-auto"}>
         {items.map((item, index) => (
           <BuyItemRow
             key={index}
@@ -32,10 +54,10 @@ const CustomSellPage = () => {
           />
         ))}
       </div>
-      <div className={"flex justify-center -mt-3 mb-3"}>
+      <div className={"flex justify-center -mt-8 z-10"}>
         <ChevronsDown className={"text-green-800 text-lg font-bold w-8 h-8"} />
       </div>
-      <div className={"text-end font-bold text-lg pe-9"}>
+      <div className={"text-end font-bold text-lg pe-9 -mt-3"}>
         Total Amount: {totalPrice}
       </div>
       <div className={"text-end font-bold text-lg pe-9 -mt-3"}>

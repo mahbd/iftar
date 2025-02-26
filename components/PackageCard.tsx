@@ -4,7 +4,6 @@ import ProductCard from "@/components/ProductCard";
 import {
   Dialog,
   DialogContent,
-  DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
@@ -42,20 +41,34 @@ const PackageCard = ({
           setDialogOpen={setIsOpen}
         />
       </DialogTrigger>
-      <DialogContent>
-        <DialogHeader>
-          <DialogTitle className={"text-start"}>Items</DialogTitle>
-          <div className={"grid grid-cols-2 gap-2"}>
-            <PackageItemCard name={name} image={"/images/ramadan-banner.jpg"} />
-            <PackageItemCard name={name} image={"/images/ramadan-banner.jpg"} />
-            <PackageItemCard name={name} image={"/images/ramadan-banner.jpg"} />
-            <PackageItemCard name={name} image={"/images/ramadan-banner.jpg"} />
+      <DialogContent className={"bg-transparent border-0"}>
+        <div className="flex items-center justify-center">
+          <div className="rounded-2xl bg-white/70 p-8 backdrop-blur-lg shadow-xl">
+            <DialogTitle className={"text-start"}>Items</DialogTitle>
+            <div className={"grid grid-cols-2 gap-2"}>
+              <PackageItemCard
+                name={name}
+                image={"/images/ramadan-banner.jpg"}
+              />
+              <PackageItemCard
+                name={name}
+                image={"/images/ramadan-banner.jpg"}
+              />
+              <PackageItemCard
+                name={name}
+                image={"/images/ramadan-banner.jpg"}
+              />
+              <PackageItemCard
+                name={name}
+                image={"/images/ramadan-banner.jpg"}
+              />
+            </div>
+            <div>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor
+              eveniet exercitationem in incidunt ipsum modi nemo perferendis
+              possimus suscipit? Aut enim nemo non quae voluptates?
+            </div>
           </div>
-        </DialogHeader>
-        <div>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor
-          eveniet exercitationem in incidunt ipsum modi nemo perferendis
-          possimus suscipit? Aut enim nemo non quae voluptates?
         </div>
       </DialogContent>
     </Dialog>

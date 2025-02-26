@@ -1,18 +1,18 @@
 export const packages = [
   {
-    image: "/images/ramadan-banner.jpg",
-    name: "কাপল প্যাকেজ",
-    description: "কাপল প্যাকেজে পাচ্ছেন দুইজনের জন্য সম্পূর্ণ প্যাকেজ",
-    price: 110,
-    discountedPrice: 100,
-    className: "hover:shadow-2xl transition-shadow duration-300",
-  },
-  {
-    image: "/images/ramadan-banner.jpg",
+    image: "/products/single-package.png",
     name: "সিঙ্গেল প্যাকেজ",
     description: "সিঙ্গেল প্যাকেজে পাচ্ছেন একজনের জন্য সম্পূর্ণ প্যাকেজ",
     price: 60,
     discountedPrice: 50,
+    className: "hover:shadow-2xl transition-shadow duration-300",
+  },
+  {
+    image: "/products/couple-package.png",
+    name: "কাপল প্যাকেজ",
+    description: "কাপল প্যাকেজে পাচ্ছেন দুইজনের জন্য সম্পূর্ণ প্যাকেজ",
+    price: 110,
+    discountedPrice: 100,
     className: "hover:shadow-2xl transition-shadow duration-300",
   },
 ];

@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import PackageSellPage from "@/components/PackageSellPage";
 import CustomSellPage from "@/components/CustomSellPage";
 import Head from "next/head";
@@ -10,7 +10,7 @@ import { useSearchParams } from "next/navigation";
 
 import { Calendar } from "@/components/ui/calendar";
 
-const OrderPage = () => {
+const OrderPageContent = () => {
   const [predefined, setPredefined] = useState(false);
   const [custom, setCustom] = useState(false);
   const [date, setDate] = useState<Date | undefined>();
@@ -103,6 +103,14 @@ const OrderPage = () => {
         {custom && <CustomSellPage />}
       </div>
     </div>
+  );
+};
+
+const OrderPage = () => {
+  return (
+    <Suspense>
+      <OrderPageContent />
+    </Suspense>
   );
 };
 

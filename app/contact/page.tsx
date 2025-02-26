@@ -3,6 +3,16 @@ import { auth } from "@/prisma/auth";
 import prisma from "@/prisma/client";
 import Head from "next/head";
 import SignInUser from "@/app/contact/SignInUser";
+import Spinner from "@/components/Spinner";
+import { Suspense } from "react";
+
+const SignInFallback = () => {
+  return (
+    <div className="flex justify-center items-center py-8">
+      <Spinner sz={"lg"} />
+    </div>
+  );
+};
 
 const ContactPage = async () => {
   const session = await auth();
@@ -15,7 +25,11 @@ const ContactPage = async () => {
     }));
 
   if (!session || !user) {
-    return <SignInUser />;
+    return (
+      <Suspense fallback={<SignInFallback />}>
+        <SignInUser />
+      </Suspense>
+    );
   }
   if (user.isSpammer) {
     return (

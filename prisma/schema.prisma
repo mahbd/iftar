@@ -12,6 +12,7 @@ model Order {
   name         String
   phone        String
   location     String
+  status       String   @default("PENDING")
   orderedItems OrderedItem[]
   finalPrice   Int
   isPreOrder   Boolean  @default(false)
@@ -44,6 +45,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  role   String? @default("USER")
   orders Order[]
 
   createdAt DateTime @default(now())

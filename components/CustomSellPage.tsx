@@ -5,8 +5,11 @@ import { items } from "@/lib/data";
 import { OrderedItem } from "@prisma/client";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { createUrlWithParams } from "@/lib/utils";
+import { useSearchParams } from "next/navigation";
 
 const CustomSellPage = () => {
+  const searchParams = useSearchParams();
   const [itemsCount, setItemsCount] = useState(Array(items.length).fill(0));
 
   let totalPrice = 0;
@@ -65,8 +68,8 @@ const CustomSellPage = () => {
         With Discount: {totalPrice - Math.floor(totalPrice / 100) * 5}
       </div>
       <div className={"flex justify-center"}>
-        <Link href={"/contact"}>
-          <Button size={"lg"}>
+        <Link href={createUrlWithParams(searchParams, "/contact")}>
+          <Button variant={"success"} size={"lg"}>
             Provide contact information{" "}
             <ArrowBigRight className={"h-12 w-12"} />
           </Button>

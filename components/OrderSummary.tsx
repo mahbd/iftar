@@ -5,8 +5,10 @@ import { useState } from "react";
 import { createOrder } from "@/lib/order.actions";
 import { Trash2 } from "lucide-react";
 import Spinner from "@/components/Spinner";
+import { useSearchParams } from "next/navigation";
 
 const OrderSummary = () => {
+  const searchParams = useSearchParams();
   const [isOpen, setIsOpen] = useState(false);
   const [reload, setReload] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -98,6 +100,10 @@ const OrderSummary = () => {
                       phone: localStorage.getItem("mobile") || "",
                       location: localStorage.getItem("location") || "",
                       finalPrice: discountedTotal,
+                      isPreOrder: searchParams.get("preorder") === "true",
+                      deliveryDate: new Date(
+                        sessionStorage.getItem("preorderDate") || new Date(),
+                      ),
                       items: orders,
                     });
                     if (!res) {

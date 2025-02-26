@@ -10,6 +10,8 @@ type OrderForm = {
   phone: string;
   location: string;
   finalPrice: number;
+  isPreOrder?: boolean;
+  deliveryDate?: Date;
   items?: OrderedItem[];
 };
 
@@ -52,6 +54,10 @@ export const createOrder = async (order: OrderForm): Promise<boolean> => {
     let message = `Order No: ${totalOrders + 1}\nName: ${order.name}\nPhone: ${order.phone}\nLocation: ${order.location}\nTotal: ${order.finalPrice}`;
     for (const item of items) {
       message += `\n${item.name}: ${item.quantity} x ${item.discountedPrice} = ${item.quantity * item.discountedPrice}`;
+    }
+    if (order.isPreOrder && order.deliveryDate) {
+      message += `\n\nPre-Order`;
+      message += `\nDelivery Date: ${order.deliveryDate.toDateString()}`;
     }
     await sendMessage(message);
     await updatedUserPromise;

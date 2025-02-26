@@ -73,7 +73,9 @@ const BuyItemRow = ({
         height={"1020"}
         className={"h-10 w-14 rounded-lg"}
       />
-      <p className={"font-bold mx-1"}>{name}</p>
+      <p className={"font-bold mx-1"}>
+        {name} ({discountedPrice}৳)
+      </p>
       <div className={"flex"}>
         <Button
           size={"icon"}

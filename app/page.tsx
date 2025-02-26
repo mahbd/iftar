@@ -74,6 +74,18 @@ export default function Home() {
         </Link>
       </div>
 
+      <div className={"flex justify-center mb-10 mt-10 md:mb-24"}>
+        <Link href={"/order?preorder=true"}>
+          <Button
+            size={"xxl"}
+            variant={"destructive"}
+            className="animate-float hover:scale-105 transition-transform shadow-xl text-lg"
+          >
+            ✨ Pre Order Now ✨
+          </Button>
+        </Link>
+      </div>
+
       <OurItemsSection />
 
       <OurPackagesSection />

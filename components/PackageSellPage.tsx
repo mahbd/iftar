@@ -5,8 +5,11 @@ import { packages } from "@/lib/data";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowBigRight } from "lucide-react";
+import { useSearchParams } from "next/navigation";
+import { createUrlWithParams } from "@/lib/utils";
 
 const PackageSellPage = () => {
+  const searchParams = useSearchParams();
   const [itemsCount, setItemsCount] = useState(Array(packages.length).fill(0));
 
   let totalPrice = 0;
@@ -59,8 +62,8 @@ const PackageSellPage = () => {
         With Discount: {totalPrice - Math.floor(totalPrice / 100) * 5}
       </div>
       <div className={"flex justify-center"}>
-        <Link href={"/contact"}>
-          <Button size={"lg"}>
+        <Link href={createUrlWithParams(searchParams, "/contact")}>
+          <Button variant={"success"} size={"lg"}>
             Provide contact information{" "}
             <ArrowBigRight className={"h-12 w-12"} />
           </Button>

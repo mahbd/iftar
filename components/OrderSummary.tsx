@@ -41,9 +41,9 @@ const OrderSummary = () => {
           Submit
         </button>
       </DialogTrigger>
-      <DialogContent className={"bg-transparent border-0"}>
-        <div className="flex items-center justify-center">
-          <div className="rounded-2xl bg-white/70 p-8 backdrop-blur-lg shadow-xl">
+      <DialogContent className={"border-0 p-0 m-0"}>
+        <div className="flex w-full items-center justify-center">
+          <div className="rounded-2xl w-80 bg-white/70 p-8 backdrop-blur-lg shadow-xl">
             <p className={"text-center text-xl font-bold text-[#2d3436] mb-6"}>
               Order Summary
             </p>

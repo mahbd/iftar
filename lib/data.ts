@@ -204,3 +204,7 @@ export const item_hash: { [key: string]: IProduct } = {};
 items.forEach((item) => {
   item_hash[item.name] = item;
 });
+
+packages.forEach((pkg) => {
+  item_hash[pkg.name] = pkg;
+});

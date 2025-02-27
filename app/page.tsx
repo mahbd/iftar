@@ -5,6 +5,7 @@ import OurItemsSection from "@/app/(sections)/OurItems";
 import OurPackagesSection from "@/app/(sections)/OurPackages";
 import TeamMembers from "@/app/(sections)/TeamMembers";
 import Head from "next/head";
+import { Hero } from "@/components/Hero";
 
 export default function Home() {
   return (
@@ -55,13 +56,7 @@ export default function Home() {
           Iftar Delights
         </h1>
       </div>
-      <Image
-        src={"/images/ramadan-banner.jpg"}
-        alt={"Ramadan Banner"}
-        width={1920}
-        height={1020}
-        className="md:mb-32 rounded-lg shadow-2xl transform hover:scale-105 transition-transform duration-300"
-      />
+      <Hero />
       <div className={"flex justify-center mt-16 md:mb-10"}>
         <Link href={"/order"}>
           <Button

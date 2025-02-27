@@ -14,7 +14,8 @@ const CustomSellPage = () => {
 
   let totalPrice = 0;
   itemsCount.forEach((count, index) => {
-    totalPrice += items[index].discountedPrice * count;
+    totalPrice +=
+      items[index].info == "৳" ? count : items[index].discountedPrice * count;
   });
 
   useEffect(() => {
@@ -49,6 +50,7 @@ const CustomSellPage = () => {
             price={item.price}
             discountedPrice={item.discountedPrice}
             step={item.step}
+            info={item.info}
             itemCount={itemsCount[index]}
             setItemCount={(count) => {
               const newItemsCount = [...itemsCount];

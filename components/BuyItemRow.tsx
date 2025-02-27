@@ -12,6 +12,7 @@ interface Props {
   itemCount: number;
   price: number;
   discountedPrice: number;
+  info?: string;
   setItemCount: (count: number) => void;
 }
 
@@ -22,6 +23,7 @@ const BuyItemRow = ({
   discountedPrice,
   step = 1,
   itemCount,
+  info,
   setItemCount,
 }: Props) => {
   useEffect(() => {
@@ -40,7 +42,7 @@ const BuyItemRow = ({
               ...parsedOrders,
               {
                 name,
-                quantity: itemCount,
+                quantity: parseFloat(itemCount.toString()),
                 price,
                 discountedPrice,
               } as OrderedItem,
@@ -92,9 +94,17 @@ const BuyItemRow = ({
             ` ${itemCount.toString().length === 1 ? "w-10" : "w-16"} md:w-20`
           }
           value={itemCount}
-          onChange={(e) => setItemCount(parseInt(e.currentTarget.value))}
+          onChange={(e) => {
+            const res = parseInt(e.currentTarget.value);
+            if (!isNaN(res)) {
+              setItemCount(res);
+            }
+          }}
           type={"number"}
         />
+        {info && (
+          <p className={"text-gray-800 font-bold me-1 mt-1 text-lg"}>{info}</p>
+        )}
         <Button
           size={"icon"}
           variant={"success"}

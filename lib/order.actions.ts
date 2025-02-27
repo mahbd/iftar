@@ -4,6 +4,7 @@ import { OrderedItem } from "@prisma/client";
 import prisma from "@/prisma/client";
 import axios from "axios";
 import { auth } from "@/prisma/auth";
+import { item_hash } from "@/lib/data";
 
 type OrderForm = {
   name: string;
@@ -53,7 +54,7 @@ export const createOrder = async (order: OrderForm): Promise<boolean> => {
 
     let message = `Order No: ${totalOrders + 1}\nName: ${order.name}\nPhone: ${order.phone}\nLocation: ${order.location}\nTotal: ${order.finalPrice}`;
     for (const item of items) {
-      message += `\n${item.name}: ${item.quantity} x ${item.discountedPrice} = ${item.quantity * item.discountedPrice}`;
+      message += `\n${item.name}: ${item.quantity} x ${item_hash[item.name].info == "৳" ? "৳" : item.discountedPrice} = ${item_hash[item.name].info == "৳" ? item.quantity : item.quantity * item.discountedPrice}`;
     }
     if (order.isPreOrder && order.deliveryDate) {
       message += `\n\nPre-Order`;

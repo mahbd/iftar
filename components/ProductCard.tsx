@@ -35,7 +35,7 @@ const ProductCard = ({
       </div>
       <div>
         <div className={"flex justify-between"}>
-          <div className={"text-center font-bold"}>{name}</div>
+          <div className={"text-center font-bold text-nowrap"}>{name}</div>
           <div className={"flex gap-1"}>
             <p
               className={
@@ -44,12 +44,12 @@ const ProductCard = ({
             >
               {price}
             </p>
-            <p className={"text-lg font-bold"}>
+            <p className={"text-lg font-bold text-nowrap"}>
               {discountedPrice} <span className={"text-yellow-900"}>৳</span>
             </p>
           </div>
         </div>
-        <div className={"flex justify-between"}>
+        <div className={"flex flex-col justify-between"}>
           <div className={"w-full text-gray-900 text-start"}>{description}</div>
           {setDialogOpen && (
             <Button variant={"success"} onClick={() => setDialogOpen(true)}>

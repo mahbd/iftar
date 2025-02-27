@@ -6,6 +6,7 @@ import { createOrder } from "@/lib/order.actions";
 import { Trash2 } from "lucide-react";
 import Spinner from "@/components/Spinner";
 import { useSearchParams } from "next/navigation";
+import { item_hash } from "@/lib/data";
 
 const OrderSummary = () => {
   const searchParams = useSearchParams();
@@ -23,10 +24,13 @@ const OrderSummary = () => {
       console.error(e);
     }
   }
-
-  const total = orders.reduce((acc: number, order) => {
-    return acc + order.discountedPrice * order.quantity;
-  }, 0);
+  let total = 0;
+  for (const order of orders) {
+    total +=
+      item_hash[order.name].info == "৳"
+        ? order.quantity
+        : order.discountedPrice * order.quantity;
+  }
   const discountedTotal = total - Math.floor(total / 100) * 5;
 
   return (
@@ -62,9 +66,13 @@ const OrderSummary = () => {
                 <p>{order.quantity}</p>
                 <p>
                   <span className={"line-through pe-1"}>
-                    {order.price * order.quantity}
+                    {item_hash[order.name].info == "৳"
+                      ? order.quantity
+                      : order.price * order.quantity}
                   </span>
-                  {order.discountedPrice * order.quantity}
+                  {item_hash[order.name].info == "৳"
+                    ? order.quantity
+                    : order.discountedPrice * order.quantity}
                   <Trash2
                     className={"ps-2 w-7 h-7 text-red-500 inline"}
                     onClick={() => {
@@ -76,13 +84,13 @@ const OrderSummary = () => {
                 </p>
               </div>
             ))}
-            <div className="flex justify-between items-center mt-5 gap-5 text-green-900">
+            <div className="flex justify-between items-center mt-5 gap-5 text-green-900 pe-7">
               <p className={"font-bold"}>Total</p>
               <p></p>
 
               <p>{total}</p>
             </div>
-            <div className="flex justify-between items-center gap-5 text-green-900">
+            <div className="flex justify-between items-center gap-5 text-green-900 pe-7">
               <p className={"font-bold"}>Discounted Total</p>
               <p></p>
 

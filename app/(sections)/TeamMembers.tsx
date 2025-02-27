@@ -11,7 +11,7 @@ const TeamMembers = () => {
     {
       image: "/team/mahmudul.jpg",
       name: "Mahmudul Alam",
-      description: "Web & app developer",
+      description: "Fullstack Web & App developer.",
       link: "https://github.com/mahbd",
     },
     {

@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/dialog";
 import PackageItemCard from "@/components/PackageItemCard";
 import { useState } from "react";
+import { IProduct } from "@/lib/data";
 
 interface Props {
   image: string;
@@ -17,6 +18,8 @@ interface Props {
   price: number;
   discountedPrice: number;
   className?: string;
+  items: IProduct[];
+  info: string;
 }
 
 const PackageCard = ({
@@ -26,6 +29,8 @@ const PackageCard = ({
   price,
   discountedPrice,
   className,
+  items,
+  info,
 }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
@@ -44,30 +49,15 @@ const PackageCard = ({
       <DialogContent className={"bg-transparent border-0"}>
         <div className="flex items-center justify-center">
           <div className="rounded-2xl bg-white/70 p-8 backdrop-blur-lg shadow-xl">
-            <DialogTitle className={"text-start"}>Items</DialogTitle>
-            <div className={"grid grid-cols-2 gap-2"}>
-              <PackageItemCard
-                name={name}
-                image={"/images/ramadan-banner.jpg"}
-              />
-              <PackageItemCard
-                name={name}
-                image={"/images/ramadan-banner.jpg"}
-              />
-              <PackageItemCard
-                name={name}
-                image={"/images/ramadan-banner.jpg"}
-              />
-              <PackageItemCard
-                name={name}
-                image={"/images/ramadan-banner.jpg"}
-              />
+            <DialogTitle className={"text-center text-lg mb-5"}>
+              Items
+            </DialogTitle>
+            <div className={"grid grid-cols-3 gap-2"}>
+              {items.map((item, i) => (
+                <PackageItemCard key={i} name={item.name} image={item.image} />
+              ))}
             </div>
-            <div>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor
-              eveniet exercitationem in incidunt ipsum modi nemo perferendis
-              possimus suscipit? Aut enim nemo non quae voluptates?
-            </div>
+            <pre className={"mt-5"}>{info}</pre>
           </div>
         </div>
       </DialogContent>

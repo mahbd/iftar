@@ -47,15 +47,10 @@ export default function Home() {
         />
         <meta name="twitter:image" content="/images/iftar-delights.jpg" />
       </Head>
-      <div
-        className={
-          " bg-cyan-600 p-2 backdrop-blur-lg shadow-xl rounded-lg my-3"
-        }
-      >
-        <h1 className="text-white bg-clip-text text-transparent text-4xl md:text-6xl font-bold text-center">
-          Iftar Delights
-        </h1>
-      </div>
+
+      <h1 className="text-center mb-5 font-bold text-3xl md:text-5xl text-white drop-shadow-md bg-orange-400 p-2 pb-3 rounded-lg">
+        Iftar Delights
+      </h1>
       <Hero />
       <div className={"flex justify-center mt-16 md:mb-10"}>
         <Link href={"/order"}>

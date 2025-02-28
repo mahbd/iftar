@@ -1,11 +1,11 @@
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { OrderedItem } from "@prisma/client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createOrder } from "@/lib/order.actions";
 import { Trash2 } from "lucide-react";
 import Spinner from "@/components/Spinner";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { item_hash } from "@/lib/data";
 
 const OrderSummary = () => {
@@ -13,6 +13,15 @@ const OrderSummary = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [reload, setReload] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [ip, setIp] = useState("");
+  const router = useRouter();
+
+  useEffect(() => {
+    fetch("https://api64.ipify.org?format=json")
+      .then((res) => res.json())
+      .then((data) => setIp(data.ip))
+      .catch((err) => console.error("Failed to fetch IP:", err));
+  }, []);
 
   const orders_str = sessionStorage.getItem("orders");
   let orders: OrderedItem[] = [];
@@ -112,16 +121,17 @@ const OrderSummary = () => {
                       deliveryDate: new Date(
                         sessionStorage.getItem("preorderDate") || new Date(),
                       ),
+                      prevId: localStorage.getItem("prevId") || undefined,
+                      ipAddr: ip,
                       items: orders,
                     });
-                    if (!res) {
-                      setIsLoading(false);
-                      console.error("Failed to place order");
-                      alert("Failed to place order");
-                      return;
-                    } else {
+
+                    if (res.isSuccessful) {
+                      localStorage.setItem("prevId", res.db_id || "");
                       sessionStorage.removeItem("orders");
-                      window.location.pathname = "/success";
+                      router.push("/success/?orderId=" + res.id);
+                    } else {
+                      router.push("/failed/?message=" + res.message);
                     }
                   } catch (e) {
                     console.error(e);

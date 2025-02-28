@@ -7,16 +7,25 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Status {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  DELIVERED
+}
+
 model Order {
   id           String        @id @default(auto()) @map("_id") @db.ObjectId
   name         String
   phone        String
   location     String
-  status       String   @default("PENDING")
+  status Status  @default(PENDING)
   orderedItems OrderedItem[]
   finalPrice   Int
   isPreOrder   Boolean  @default(false)
   deliveryDate DateTime @default(now())
+  ipAddr String?
+  prevId String? @db.ObjectId
   userId       String?  @db.ObjectId
   user         User?    @relation(fields: [userId], references: [id])
   createdAt    DateTime      @default(now())
@@ -39,10 +48,10 @@ model User {
   email         String?   @unique
   phone         String?
   location      String?
-  ipaddress     String?
   isSpammer     Boolean?
   emailVerified DateTime?
   image         String?
+  deviceInfo String?
   accounts      Account[]
   sessions      Session[]
   role   String? @default("USER")

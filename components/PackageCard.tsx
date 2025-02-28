@@ -10,6 +10,7 @@ import {
 import PackageItemCard from "@/components/PackageItemCard";
 import { useState } from "react";
 import { IProduct } from "@/lib/data";
+import { XIcon } from "lucide-react";
 
 interface Props {
   image: string;
@@ -49,6 +50,7 @@ const PackageCard = ({
       <DialogContent className={"bg-transparent border-0"}>
         <div className="flex items-center justify-center">
           <div className="rounded-2xl bg-white/70 p-8 backdrop-blur-lg shadow-xl">
+            <XIcon className={"flex justify-end"} />
             <DialogTitle className={"text-center text-lg mb-5"}>
               Items
             </DialogTitle>

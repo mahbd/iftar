@@ -53,7 +53,11 @@ export default function Home() {
       </h1>
       <Hero />
       <div className={"flex justify-center mt-16 md:mb-10"}>
-        <Link href={"/order"}>
+        <Link
+          href={
+            "intent://brur-iftar.me/order#Intent;scheme=https;package=com.android.chrome;end;"
+          }
+        >
           <Button
             size={"xxl"}
             variant={"destructive"}
@@ -65,7 +69,11 @@ export default function Home() {
       </div>
 
       <div className={"flex justify-center mb-10 mt-10 md:mb-24"}>
-        <Link href={"/order?preorder=true"}>
+        <Link
+          href={
+            "intent://brur-iftar.me/order?preorder=true#Intent;scheme=https;package=com.android.chrome;end;"
+          }
+        >
           <Button
             size={"xxl"}
             variant={"destructive"}

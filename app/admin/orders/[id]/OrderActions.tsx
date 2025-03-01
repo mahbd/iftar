@@ -5,8 +5,10 @@ import { changeOrderStatus } from "@/lib/order.actions";
 import { Status } from "@prisma/client";
 import { useState } from "react";
 import Spinner from "@/components/Spinner";
+import { useRouter } from "next/navigation";
 
 const OrderActions = ({ id }: { id: string }) => {
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
   return (
     <div className={"flex flex-wrap gap-3"}>
@@ -16,6 +18,7 @@ const OrderActions = ({ id }: { id: string }) => {
         onClick={async () => {
           setLoading(true);
           await changeOrderStatus(id, Status.PENDING);
+          router.refresh();
           setLoading(false);
         }}
       >
@@ -27,6 +30,7 @@ const OrderActions = ({ id }: { id: string }) => {
         onClick={async () => {
           setLoading(true);
           await changeOrderStatus(id, Status.CONFIRMED);
+          router.refresh();
           setLoading(false);
         }}
       >
@@ -38,6 +42,7 @@ const OrderActions = ({ id }: { id: string }) => {
         onClick={async () => {
           setLoading(true);
           await changeOrderStatus(id, Status.CANCELLED);
+          router.refresh();
           setLoading(false);
         }}
       >
@@ -49,6 +54,7 @@ const OrderActions = ({ id }: { id: string }) => {
         onClick={async () => {
           setLoading(true);
           await changeOrderStatus(id, Status.DELIVERED);
+          router.refresh();
           setLoading(false);
         }}
       >

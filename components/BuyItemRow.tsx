@@ -83,7 +83,7 @@ const BuyItemRow = ({
           size={"icon"}
           variant={"destructive"}
           onClick={() => {
-            setItemCount(Math.max(0, itemCount - step));
+            setItemCount(Math.min(Math.max(0, itemCount - step), 2000));
           }}
         >
           <MinusIcon />

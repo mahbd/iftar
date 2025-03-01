@@ -3,10 +3,13 @@ import { Suspense } from "react";
 import SearchBar from "@/app/admin/SearchBar";
 import { Prisma, Status } from "@prisma/client";
 import Link from "next/link";
+import OrderFilters from "@/app/admin/orders/OrderFilters";
 
 interface OrderPageProps {
   searchParams: Promise<{
     search?: string;
+    filterStatus?: string;
+    filterLocation?: string;
   }>;
 }
 
@@ -26,7 +29,6 @@ const getBgColor = (status: Status) => {
 };
 
 const OrderPage = async ({ searchParams }: OrderPageProps) => {
-  // get all orders of today. Keep this cached for 5 minutes
   const allOrders = await prisma.order.findMany({
     where: {
       createdAt: {
@@ -43,12 +45,14 @@ const OrderPage = async ({ searchParams }: OrderPageProps) => {
       (userHash[order.userId || "none"] || 0) + 1;
   });
 
-  let orFilters: Prisma.OrderWhereInput[] = [];
+  const whereClause: Prisma.OrderWhereInput = {};
   const search = (await searchParams).search;
+  const filterStatus = (await searchParams).filterStatus;
+  const filterLocation = (await searchParams).filterLocation;
 
   if (search) {
     const queries = search.split(",").filter(Boolean);
-    orFilters = queries
+    const orFilters: Prisma.OrderWhereInput[] = queries
       .map((query) => {
         const [field, value] = query.split(":");
         if (field && value) {
@@ -62,12 +66,21 @@ const OrderPage = async ({ searchParams }: OrderPageProps) => {
         return null;
       })
       .filter(Boolean) as Prisma.OrderWhereInput[];
+
+    if (orFilters.length > 0) {
+      whereClause.OR = orFilters;
+    }
+  }
+
+  if (filterStatus) {
+    whereClause.status = filterStatus as Status;
+  }
+  if (filterLocation) {
+    whereClause.location = filterLocation;
   }
 
   const orders = await prisma.order.findMany({
-    where: {
-      OR: orFilters.length > 0 ? orFilters : undefined,
-    },
+    where: whereClause,
     orderBy: {
       createdAt: "desc",
     },
@@ -81,6 +94,7 @@ const OrderPage = async ({ searchParams }: OrderPageProps) => {
           link={"/admin/orders/"}
           fields={["name", "phone", "location"]}
         />
+        <OrderFilters />
       </Suspense>
       <div className={"flex flex-col gap-2 mt-5"}>
         {orders.map((order) => (

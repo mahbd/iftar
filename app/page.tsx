@@ -6,6 +6,7 @@ import TeamMembers from "@/app/(sections)/TeamMembers";
 import Head from "next/head";
 import { Hero } from "@/components/Hero";
 import OrderButtons from "@/components/OrderButtons";
+import { Mail } from "lucide-react";
 
 export default function Home() {
   return (
@@ -103,10 +104,13 @@ export default function Home() {
           }
         >
           <h2 className={"text-2xl font-bold"}>Contact Us</h2>
-          <p>Phone: +8801522106307</p>
-          <p>
-            Email:{" "}
-            <a href="mailto:mahmudula2000@gmail.com">mahmudula2000@gmail.com</a>
+          <p className={"flex ms-1"}>Phone: +8801522106307</p>
+          <p className={"flex ms-1"}>
+            Email:&nbsp;
+            <Mail />
+            <a href="mailto:mahmudula2000@gmail.com" className={"underline"}>
+              &nbsp;Gmail
+            </a>
           </p>
         </div>
         <div

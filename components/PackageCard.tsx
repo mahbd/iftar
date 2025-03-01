@@ -50,7 +50,10 @@ const PackageCard = ({
       <DialogContent className={"bg-transparent border-0"}>
         <div className="flex items-center justify-center">
           <div className="rounded-2xl bg-white/70 p-8 backdrop-blur-lg shadow-xl">
-            <XIcon className={"flex justify-end"} />
+            <XIcon
+              className={"flex justify-end cursor-pointer"}
+              onClick={() => setIsOpen(false)}
+            />
             <DialogTitle className={"text-center text-lg mb-5"}>
               Items
             </DialogTitle>

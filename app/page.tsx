@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { after } from "next/server";
 import Link from "next/link";
 import OurItemsSection from "@/app/(sections)/OurItems";
 import OurPackagesSection from "@/app/(sections)/OurPackages";
@@ -7,8 +8,25 @@ import Head from "next/head";
 import { Hero } from "@/components/Hero";
 import OrderButtons from "@/components/OrderButtons";
 import { Mail } from "lucide-react";
+import prisma from "@/prisma/client";
 
 export default function Home() {
+  after(async () => {
+    const prev = await prisma.otherInfo.findMany({
+      where: {
+        key: "visits",
+      },
+    });
+
+    await prisma.otherInfo.update({
+      where: {
+        id: prev[0].id,
+      },
+      data: {
+        value: (parseInt(prev[0].value) + 1).toString(),
+      },
+    });
+  });
   return (
     <div className={"max-w-7xl"}>
       <Head>

@@ -19,8 +19,7 @@ export const packages = [
   {
     image: "/products/single-package.png",
     name: "সিঙ্গেল+",
-    description:
-      "সিঙ্গেল+ প্যাকেজে পাচ্ছেন একজনের জন্য সম্পূর্ণ প্যাকেজ লাচ্ছি সহ",
+    description: "সিঙ্গেল+ প্যাকেজে পাচ্ছেন লাচ্ছিসহ একজনের সম্পূর্ণ প্যাকেজ",
     price: 70,
     discountedPrice: 60,
     className: "hover:shadow-2xl transition-shadow duration-300",
@@ -55,8 +54,7 @@ export const packages = [
   {
     image: "/products/couple-package.png",
     name: "কাপল+",
-    description:
-      "কাপল+ প্যাকেজে পাচ্ছেন দুইজনের জন্য সম্পূর্ণ প্যাকেজ লাচ্ছি সহ",
+    description: "কাপল+ প্যাকেজে পাচ্ছেন লাচ্ছিসহ দুইজনের সম্পূর্ণ প্যাকেজ",
     price: 130,
     discountedPrice: 120,
     className: "hover:shadow-2xl transition-shadow duration-300",

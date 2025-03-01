@@ -31,6 +31,12 @@ model Order {
   createdAt    DateTime      @default(now())
 }
 
+model OtherInfo {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  key   String
+  value String
+}
+
 model OrderedItem {
   id              String @id @default(auto()) @map("_id") @db.ObjectId
   name            String

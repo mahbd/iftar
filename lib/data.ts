@@ -126,7 +126,7 @@ export const items: IProduct[] = [
   {
     image: "/products/morich.jpg",
     name: "মরিচের চপ",
-    description: "Very Tasty ginger",
+    description: "টাটকা এবং সতেজ মরিচের চপ",
     price: 3,
     discountedPrice: 2,
     info: "P",
@@ -192,7 +192,7 @@ export const items: IProduct[] = [
   {
     image: "/products/rosun-chop.jpg",
     name: "রসুনের চপ",
-    description: "রসুনের তৈরি সুস্বাদু রসুনের চপ",
+    description: "রসুনের তৈরি সুস্বাদু চপ",
     price: 7,
     discountedPrice: 5,
     info: "P",

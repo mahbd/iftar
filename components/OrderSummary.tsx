@@ -8,7 +8,11 @@ import Spinner from "@/components/Spinner";
 import { useRouter, useSearchParams } from "next/navigation";
 import { item_hash } from "@/lib/data";
 
-const OrderSummary = () => {
+interface Props {
+  isValid: boolean;
+}
+
+const OrderSummary = ({ isValid }: Props) => {
   const searchParams = useSearchParams();
   const [isOpen, setIsOpen] = useState(false);
   const [reload, setReload] = useState(false);
@@ -46,7 +50,8 @@ const OrderSummary = () => {
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger className={"w-full"}>
         <button
-          className="w-full rounded-lg bg-green-800 py-3 px-6 font-semibold text-white transition-all hover:bg-[#ff5252] hover:shadow-lg hover:shadow-[#ff6b6b]/30"
+          disabled={!isValid}
+          className="w-full rounded-lg bg-green-800 py-3 px-6 font-semibold text-white transition-all hover:bg-[#ff5252] hover:shadow-lg hover:shadow-[#ff6b6b]/30 disabled:opacity-50"
           onClick={() => {
             setIsOpen(true);
           }}

@@ -32,7 +32,6 @@ const ContactInformation = ({ prevName, prevMobile, prevLocation }: Props) => {
           alert("Please add some items to your cart first");
           return redirect("/order");
         }
-        console.log(orders);
       } catch (e) {
         console.error(e);
       }
@@ -72,6 +71,18 @@ const DialogContentShow = ({
   setMobile,
   setLocation,
 }: ShowProps) => {
+  const validatePhoneNumber = (number: string) => {
+    return number.length === 11 && number.startsWith("01");
+  };
+
+  const validateName = (name: string) => {
+    return name.length > 0;
+  };
+
+  const validateLocation = (location: string) => {
+    return location.length > 0;
+  };
+
   return (
     <div className="flex items-center justify-center">
       <div className="rounded-2xl bg-white/70 p-8 backdrop-blur-lg shadow-xl">
@@ -95,6 +106,9 @@ const DialogContentShow = ({
                 setName(e.currentTarget.value);
               }}
             />
+            {!validateName(name) && (
+              <p className="text-red-500 text-xs">Name is required</p>
+            )}
           </div>
 
           <div className="space-y-2">
@@ -114,6 +128,9 @@ const DialogContentShow = ({
                 setMobile(e.currentTarget.value);
               }}
             />
+            {!validatePhoneNumber(mobile) && (
+              <p className="text-red-500 text-xs">Example: 01XXXXXXXXX</p>
+            )}
           </div>
 
           {/* Location Field */}
@@ -139,9 +156,18 @@ const DialogContentShow = ({
               <option value="Sardar Para">Sardar Para</option>
               <option value="Chak Bazar">Chak Bazar</option>
             </select>
+            {!validateLocation(location) && (
+              <p className="text-red-500 text-xs">Location is required</p>
+            )}
           </div>
 
-          <OrderSummary />
+          <OrderSummary
+            isValid={
+              validateName(name) &&
+              validatePhoneNumber(mobile) &&
+              validateLocation(location)
+            }
+          />
         </div>
       </div>
     </div>

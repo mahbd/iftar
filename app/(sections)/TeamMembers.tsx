@@ -9,12 +9,6 @@ const TeamMembers = () => {
       link: "https://www.facebook.com/share/15UQ3KtMF6/",
     },
     {
-      image: "/team/mahmudul.jpg",
-      name: "Mahmudul Alam",
-      description: "Fullstack Web & App developer.",
-      link: "https://github.com/mahbd",
-    },
-    {
       image: "/team/rony.jpg",
       name: "Md. Rony Islam",
       description: "Customer service expert and social media manager.",
